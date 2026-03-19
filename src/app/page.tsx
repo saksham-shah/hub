@@ -1,5 +1,11 @@
 import Hero from "@/components/Hero";
 import GameCard from "@/components/GameCard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Saksham Shah",
+  description: "For now just a bunch of browser game I've made.",
+};
 
 const games = [
   {
@@ -26,17 +32,97 @@ const games = [
 
 export default function Home() {
   return (
-    <main>
+    <main style={{ position: "relative", zIndex: 2 }}>
       <Hero />
 
       <section
         id="projects"
-        className="px-6 md:px-20 py-20 grid grid-cols-1 md:grid-cols-2 gap-8"
+        style={{
+          padding: "6rem 1.5rem 8rem",
+          maxWidth: 1100,
+          margin: "0 auto",
+        }}
       >
-        {games.map((game, i) => (
-          <GameCard key={i} {...game} />
-        ))}
+        {/* Section header */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+            marginBottom: "3.5rem",
+            flexWrap: "wrap",
+            gap: "1rem",
+          }}
+        >
+          <div>
+            <p
+              style={{
+                fontSize: "0.72rem",
+                color: "var(--accent)",
+                fontWeight: 500,
+                textTransform: "uppercase",
+                letterSpacing: "0.25em",
+                marginBottom: "0.75rem",
+              }}
+            >
+              — Projects
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                lineHeight: 0.95,
+                letterSpacing: "0.01em",
+                color: "var(--text)",
+                textTransform: "uppercase",
+              }}
+            >
+              The Games
+            </h2>
+          </div>
+
+          <p
+            style={{
+              fontSize: "0.875rem",
+              color: "var(--muted)",
+              maxWidth: 260,
+              lineHeight: 1.6,
+              fontWeight: 300,
+            }}
+          >
+            Each game is playable in your browser, no install needed.
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 480px), 1fr))",
+            gap: "1.5rem",
+          }}
+        >
+          {games.map((game, i) => (
+            <GameCard key={i} {...game} index={i} />
+          ))}
+        </div>
       </section>
+
+      {/* Footer */}
+      <footer
+        style={{
+          borderTop: "1px solid var(--border)",
+          padding: "2rem 1.5rem",
+          textAlign: "center",
+          fontSize: "0.78rem",
+          color: "var(--muted)",
+          letterSpacing: "0.05em",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        © {new Date().getFullYear()} Saksham Shah — Built with Next.js
+      </footer>
     </main>
   );
 }
