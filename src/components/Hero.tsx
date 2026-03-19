@@ -20,7 +20,7 @@ export default function Hero() {
         transition={{ delay: 0.2 }}
         className="mt-4 text-lg text-gray-500 max-w-xl"
       >
-        This whole thing is made by whatever free model ChatGPT uses. I&apos;ll get Claude to improve it later.
+        This whole thing is made by whatever free model ChatGPT uses. I&apos;ll get Claude to improve it later, it was just down when I made this.
       </motion.p>
 
       <motion.a
