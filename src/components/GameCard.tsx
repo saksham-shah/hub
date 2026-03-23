@@ -37,7 +37,7 @@ export default function GameCard({ title, description, href, index }: Props) {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      style={{ position: "relative" }}
+      style={{ position: "relative", height: "100%" }}
     >
       <motion.div
         whileHover="hover"
@@ -49,8 +49,20 @@ export default function GameCard({ title, description, href, index }: Props) {
           background: "var(--border)",
           cursor: "pointer",
           overflow: "hidden",
+          height: "100%",
         }}
       >
+        {/* Full-card clickable overlay — sits above everything except interactive elements */}
+        <Link
+          href={href}
+          aria-label={`Play ${title}`}
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 10,
+            borderRadius: 20,
+          }}
+        />
         {/* Animated border glow */}
         <motion.div
           variants={{
@@ -75,6 +87,9 @@ export default function GameCard({ title, description, href, index }: Props) {
             padding: "2rem",
             position: "relative",
             overflow: "hidden",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           {/* Background number */}
@@ -100,6 +115,7 @@ export default function GameCard({ title, description, href, index }: Props) {
             style={{
               display: "inline-flex",
               alignItems: "center",
+              alignSelf: "flex-start",
               gap: "0.4rem",
               padding: "0.3rem 0.75rem",
               background: tagBg,
@@ -153,13 +169,9 @@ export default function GameCard({ title, description, href, index }: Props) {
           </p>
 
           {/* Divider */}
-          <div
-            style={{
-              marginTop: "1.75rem",
-              height: 1,
-              background: "var(--border)",
-            }}
-          />
+          <div style={{ marginTop: "auto", paddingTop: "1.75rem" }}>
+            <div style={{ height: 1, background: "var(--border)" }} />
+          </div>
 
           {/* Footer */}
           <div
@@ -170,8 +182,7 @@ export default function GameCard({ title, description, href, index }: Props) {
               justifyContent: "space-between",
             }}
           >
-            <Link
-              href={href}
+            <span
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -179,7 +190,6 @@ export default function GameCard({ title, description, href, index }: Props) {
                 fontSize: "0.85rem",
                 fontWeight: 500,
                 color: accent,
-                textDecoration: "none",
                 letterSpacing: "0.03em",
               }}
             >
@@ -191,7 +201,7 @@ export default function GameCard({ title, description, href, index }: Props) {
               >
                 →
               </motion.span>
-            </Link>
+            </span>
 
             {/* Animated corner accent */}
             <motion.div
