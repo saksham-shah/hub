@@ -100,6 +100,7 @@ export default function Home() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 480px), 1fr))",
             gap: "1.5rem",
+            alignItems: "stretch",
           }}
         >
           {games.map((game, i) => (
