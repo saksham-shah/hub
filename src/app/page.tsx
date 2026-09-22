@@ -28,6 +28,11 @@ const games = [
     description: "Somehow yet another time-based bullet hell.",
     href: "/play/second-chance",
   },
+  {
+    title: "Long Live the King",
+    description: "Lead a kingdom, survive raids, and keep the crown alive.",
+    href: "https://long-live-the-king.pages.dev",
+  },
 ];
 
 export default function Home() {
