@@ -31,7 +31,7 @@ const games = [
   {
     title: "Long Live the King",
     description: "Lead a kingdom, survive raids, and keep the crown alive.",
-    href: "https://long-live-the-king.pages.dev",
+    href: "/play/long-live-the-king",
   },
 ];
 
